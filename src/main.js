@@ -100,7 +100,20 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
 const addButton = document.querySelector("#add-card")
 
 addButton.addEventListener("click", () => {
-  alert("Cartão adicionado com sucesso!")
+  if (
+    (cardNumberMasked.value === "") |
+    (securityCodeMasked.value === "") |
+    (expirationDateMasked.value === "") |
+    (cardHolder.value === "")
+  ) {
+    alert("Favor preencher todos os dados do cartão.")
+  } else {
+    alert("Cartão adicionado com sucesso!")
+    cardNumberMasked.value = ""
+    securityCodeMasked.value = ""
+    expirationDateMasked.value = ""
+    cardHolder.value = ""
+  }
 })
 
 document.querySelector("form").addEventListener("submit", (event) => {
